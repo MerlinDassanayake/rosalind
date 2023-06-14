@@ -26,14 +26,14 @@ for line in FASTAFile:
     else:
         FASTADict[FASTALabel] += line
 
-print(FASTADict)
+#print(FASTADict)
 
 # === Format the data (Store the data in a convenient way)
 # === Run needed operation on the data (pass the data to our gc_content functions)
 # Using Dictionary Comprehension to generate a new dictionary with GC content
 RESULTDict = {key: gc_content(value) for (key,value) in FASTADict.items()}
 
-print(RESULTDict)
+#print(RESULTDict)
 
 #Looking for max value in values() of our new dictionary
 MaxGCKey = max(RESULTDict, key=RESULTDict.get)
