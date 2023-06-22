@@ -13,7 +13,7 @@ print(f'[1] + Sequence Length: {len(DNAStr)}\n')
 print(colored(f'[2] + Nucleotide Frequency: {countNucFrequency(DNAStr)}\n'))
 print(f'[3] + DNA/RNA Transcription: {colored(transcription(DNAStr))}\n')
 
-print(f"[4] + DNA String + Reverse Complement:\n5' {colored(DNAStr)} 3' ")
+print(f"[4] + DNA String + reverse Complement:\n5' {colored(DNAStr)} 3' ")
 print(f"   {''.join(['|' for c in range(len(DNAStr))])}")
 print(f"3' {colored(reverse_complement(DNAStr)[::-1])} 5'\n")
 
