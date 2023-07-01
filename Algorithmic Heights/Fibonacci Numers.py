@@ -27,4 +27,8 @@ def fib_bottom_up(n):
     return bottom_up[n]
 
 
-print(fib_bottom_up(24))
+def Fibonacci_Loop_Python(number):
+    old, new = 1, 1
+    for itr in range(number - 1):
+        new, old = old, old + new
+    return new
