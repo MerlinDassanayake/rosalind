@@ -5,7 +5,7 @@ def rabbit_recurrence(months, offspring):
     return child
 
 
-print(rabbit_recurrence(36, 4))
+print(rabbit_recurrence(5, 3))
 """
 o - small (children) rabbits. They have to mature and reproduce in the next cycle only.
 O - mature (parents) rabbits. They can reproduce and move to the next cycle.
