@@ -9,11 +9,12 @@
 # and thus displaying dominatnt phenotype
 # assume any two organisms can mate.
 
+# Derived equation from probability tree
+k=19
+m=19
+n=29
+pop=k+m+n
+probability = (4*(k*(k-1)+2*(k*m)+2*(k*n)+m*n)+(3*m*(m-1)))/(4*(pop*(pop-1)))
 
-k = int()
-m = int()
-n = int()
-
-population = k + m + n
-
-
+# Print output with given population parameters
+print(probability)
