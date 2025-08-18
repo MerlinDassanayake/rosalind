@@ -20,13 +20,9 @@ def read_FASTA(filePath):
             FASTADict[FASTALabel] += line
 
     return FASTADict
- 
-read_FASTA("rosalind.fa")
 
-for dna in FASTADict.values():
-    print(dna) 
 
-def profile_matrix(dna_sequences):
+def get_consensus(dna_sequences):
     """function takes dna sequences and returns a consensus matrix"""
 
     length = len(dna_sequences[0]) # takes length value from first sequence
@@ -44,7 +40,31 @@ def profile_matrix(dna_sequences):
 
     consensus = []
 
-
-
-
+    for i in range(length):
+        max_count = 0
+        max_nucleotide = "A"
+        for nucleotide in ['A','C','G','T']:
+            if profile_matrix[nucleotide][i] > max_count:
+                max_count = profile_matrix[nucleotide][i]
+                max_nucleotide = nucleotide
+        consensus.append(max_nucleotide)
+    return ''.join(consensus), profile_matrix
     
+def main():
+    import sys
+    if len(sys.argv) !=2:
+        print("Usage: python script.py <fasta_file>")
+        sys.exit(1)
+
+    fasta_file = sys.argv[1]
+    fasta_dict = read_FASTA(fasta_file)
+    dna_sequences = list(fasta_dict.values())
+
+    consensus = get_consensus(dna_sequences)
+    consensus, profile_matrix = get_consensus(dna_sequences)
+    print(consensus)
+    for nucleotide in ['A','C','G','T']:
+        print(f"{nucleotide}: {' '.join(map(str, profile_matrix[nucleotide]))}")
+
+if __name__ == "__main__":
+    main()
