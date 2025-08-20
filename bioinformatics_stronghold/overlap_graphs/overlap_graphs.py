@@ -44,7 +44,7 @@ def adjecency_list(fasta_dict):
 
 def main():
     'Main function'
-
+    print(read_fasta("rosalind.fa"))
 
 if __name__ == "__main__":
     main()
