@@ -4,7 +4,15 @@ import sys
 
 
 def read_fasta(file_path):
-    'reads fasta file into dictionary'
+    """
+    Function parses fasta file into dictionary of labels and sequences.
+    
+    Args:
+        file_path (str): The filepath to the fasta file.
+    
+    Returns:
+        dict: A dictionary of fasta labels and sequences.
+    """
     with open(file_path, 'r', encoding="utf-8") as f:
         fasta_file = [l.strip() for l in f.readlines()]
 
@@ -22,7 +30,15 @@ def read_fasta(file_path):
     return fasta_dictionary
 
 def get_consensus(dna_sequences):
-    """function takes dna sequences and returns a consensus matrix"""
+    """
+    function takes dna sequences and returns a consensus matrix
+    
+    Args:
+        dna_sequences (list): A list of DNA sequences.
+        
+    Returns:
+        str, dict: A string of the consensus sequence and a dictionary of the profile matrix.
+    """
 
     length = len(dna_sequences[0]) # takes length value from first sequence
 
