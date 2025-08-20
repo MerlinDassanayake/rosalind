@@ -1,26 +1,25 @@
-# Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format.
-# Return: A consensus string and profile matrix for the collection.
-# (If several possible consensus strings exist, then you may return any one of them.)
+"""Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format. 
+Return: A consensus string and profile matrix for the collection."""
+import sys
 
-# First parse fasta file and return list of strings?
 
-def read_FASTA(filePath):
-    with open(filePath, 'r') as f:
-        FASTAFile = [l.strip() for l in f.readlines()]
+def read_fasta(file_path):
+    'reads fasta file into dictionary'
+    with open(file_path, 'r', encoding="utf-8") as f:
+        fasta_file = [l.strip() for l in f.readlines()]
 
-    global FASTADict
-    FASTADict = {}
-    FASTALabel = ""
+    global fasta_dictionary
+    fasta_dictionary = {}
+    fasta_label = ""
 
-    for line in FASTAFile:
+    for line in fasta_file:
         if '>' in line:
-            FASTALabel = line
-            FASTADict[FASTALabel] = ""
+            fasta_label = line
+            fasta_dictionary[fasta_label] = ""
         else:
-            FASTADict[FASTALabel] += line
+            fasta_dictionary[fasta_label] += line
 
-    return FASTADict
-
+    return fasta_dictionary
 
 def get_consensus(dna_sequences):
     """function takes dna sequences and returns a consensus matrix"""
@@ -49,15 +48,15 @@ def get_consensus(dna_sequences):
                 max_nucleotide = nucleotide
         consensus.append(max_nucleotide)
     return ''.join(consensus), profile_matrix
-    
+
 def main():
-    import sys
+    "main function"
     if len(sys.argv) !=2:
         print("Usage: python script.py <fasta_file>")
         sys.exit(1)
 
     fasta_file = sys.argv[1]
-    fasta_dict = read_FASTA(fasta_file)
+    fasta_dict = read_fasta(fasta_file)
     dna_sequences = list(fasta_dict.values())
 
     consensus = get_consensus(dna_sequences)
