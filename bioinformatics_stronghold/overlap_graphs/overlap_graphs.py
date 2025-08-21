@@ -22,7 +22,7 @@ def read_fasta(file_path):
 
     for line in fasta_file:
         if '>' in line:
-            fasta_label = line
+            fasta_label = line[1:] # remove > from label
             fasta_dictionary[fasta_label] = ""
         else:
             fasta_dictionary[fasta_label] += line
@@ -30,7 +30,7 @@ def read_fasta(file_path):
     return fasta_dictionary
 
 
-def adjecency_list(fasta_dict):
+def adjacency_list(fasta_dict):
     """
     A function that returns an adjacency list corresponding to O3.
 
@@ -40,6 +40,7 @@ def adjecency_list(fasta_dict):
     Returns:
         ***
     """
+
 
 
 def main():
