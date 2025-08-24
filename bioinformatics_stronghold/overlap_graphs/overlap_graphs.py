@@ -30,7 +30,7 @@ def read_fasta(file_path):
     return fasta_dictionary
 
 
-def adjacency_list(fasta_dict):
+def adjacency_list(fasta_dict, k):
     """
     A function that returns an adjacency list corresponding to O3.
 
@@ -40,12 +40,22 @@ def adjacency_list(fasta_dict):
     Returns:
         ***
     """
-
-
+    overlap_list = []
+    for label_a, seq_a in fasta_dict.items():
+        for label_b, seq_b in fasta_dict.items():
+            if label_a != label_b:
+                if seq_a[-k:] == seq_b[:k]:
+                    overlap_list.append((label_a, label_b))
+    return overlap_list
 
 def main():
-    'Main function'
-    print(read_fasta("rosalind.fa"))
+    """Main function"""
+    fasta_location = input("Please enter the name of the fasta file to parse: ")
+    k_value = int(input("Please enter the value for k: "))
+    sequence_dict = read_fasta(fasta_location)
+    overlap_list = adjacency_list(sequence_dict, k_value)
+    for v, w in overlap_list:
+        print(v,w)
 
 if __name__ == "__main__":
     main()
