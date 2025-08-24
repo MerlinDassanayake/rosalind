@@ -1,6 +1,6 @@
 """
 Given: A collection of DNA strings in FASTA format having total length at most 10 kbp.
-Return: The adjecency list corresponding to O3. You may return edges in any order.
+Return: The adjacency list corresponding to O3. You may return edges in any order.
 """
 
 
