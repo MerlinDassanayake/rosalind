@@ -10,3 +10,26 @@ Return: The expected number of offspring displaying the dominant phenotype in th
 """
 
 
+def expected_offspring(integer_list):
+    """
+    Determines the number of expected offspring in the next generation that display a dominant phenotype given each couple produces two offspring.
+    """
+    genotype_probability_list = [1,1,1,0.75,0.5,0]
+
+    number_of_offspring = 0
+
+    for num in range(len(integer_list)):
+        if integer_list[num] > 0:
+            temp_num = integer_list[num] * genotype_probability_list[num]
+            number_of_offspring += temp_num
+    return number_of_offspring * 2
+
+
+def main():
+    "main function"
+    sample_list = [17490, 17707, 17782, 18957, 16732, 18158]
+    print(expected_offspring(sample_list))
+
+
+if __name__ == "__main__":
+    main()
